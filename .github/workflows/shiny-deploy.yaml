@@ -1,0 +1,43 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main, master]
+
+name: shiny-deploy
+
+jobs:
+  shiny-deploy:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          # To install LaTeX to build PDF book
+          tinytex: true
+          # uncomment below and fill to pin a version
+          # version: 0.9.600
+
+      - name: Set up R Environment
+        uses: r-lib/actions/setup-renv@v2 # Installs packages from renv lockfile
+        with:
+          cache-version: 1
+
+      - name: Install {rsconnect} and {quarto}
+        uses: r-lib/actions/setup-r-dependencies@v2
+         with:
+           packages: |
+             rsconnect
+             quarto
+           dependencies: '"hard"'
+
+
+      - name: Authorize and deploy app
+        run: |
+          rsconnect::setAccountInfo(${{ secrets.RSCONNECT_USER }}, ${{ secrets.RSCONNECT_TOKEN }}, ${{ secrets.RSCONNECT_SECRET }})
+          rsconnect::deployApp(quarto = quarto::quarto_path())
+        shell: Rscript {0}
