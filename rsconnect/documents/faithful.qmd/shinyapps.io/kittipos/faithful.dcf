@@ -5,12 +5,12 @@ account: kittipos
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 6707107
-bundleId: 6142414
+bundleId: 6142496
 url: https://kittipos.shinyapps.io/faithful/
-when: 1659021937.5365
-lastSyncTime: 1659021937.53652
+when: 1659023043.9363
+lastSyncTime: 1659023043.93631
 quarto_version: 1.0.37
 quarto_engines: knitr
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: README.md
+ignoredFiles: .github/.gitignore|.github/workflows/shiny-deploy.yaml|.Rbuildignore|.Rprofile|.rscignore|README.md

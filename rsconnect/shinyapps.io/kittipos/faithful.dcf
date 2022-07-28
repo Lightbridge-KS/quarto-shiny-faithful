@@ -1,0 +1,11 @@
+name: faithful
+title: faithful
+username:
+account: kittipos
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6707107
+bundleId: 6142519
+url: https://kittipos.shinyapps.io/faithful/
+when: 1659023373.55512
+lastSyncTime: 1659023373.55514
