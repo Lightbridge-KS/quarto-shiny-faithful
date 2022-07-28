@@ -4,6 +4,8 @@ format: html
 server: shiny
 ---
 
+Hello World
+
 
 ```{r}
 sliderInput("bins", "Number of bins:", 
