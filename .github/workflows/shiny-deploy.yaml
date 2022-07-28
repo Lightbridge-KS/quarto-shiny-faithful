@@ -28,12 +28,17 @@ jobs:
           cache-version: 1
 
       - name: Install {rsconnect} and {quarto}
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-           packages: |
-             rsconnect
-             quarto
-           dependencies: '"hard"'
+        run: |
+          renv::install("rsconnect")
+          renv::install("quarto")
+        shell: Rscript {0}
+
+        ## uses: r-lib/actions/setup-r-dependencies@v2
+        # with:
+        #    packages: |
+        #      rsconnect
+        #      quarto
+        #    dependencies: '"hard"'
 
 
       - name: Authorize and deploy app
