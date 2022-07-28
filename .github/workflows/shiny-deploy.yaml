@@ -9,8 +9,6 @@ name: shiny-deploy
 jobs:
   shiny-deploy:
     runs-on: ubuntu-latest
-    # env:
-    #   GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
 
@@ -32,13 +30,6 @@ jobs:
           renv::install("rsconnect")
           renv::install("quarto")
         shell: Rscript {0}
-
-        ## uses: r-lib/actions/setup-r-dependencies@v2
-        # with:
-        #    packages: |
-        #      rsconnect
-        #      quarto
-        #    dependencies: '"hard"'
 
 
       - name: Authorize and deploy app
