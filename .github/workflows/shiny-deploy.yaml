@@ -39,5 +39,5 @@ jobs:
       - name: Authorize and deploy app
         run: |
           rsconnect::setAccountInfo("${{ secrets.RSCONNECT_USER }}", "${{ secrets.RSCONNECT_TOKEN }}", "${{ secrets.RSCONNECT_SECRET }}")
-          rsconnect::deployApp(appName = "faithful", quarto = quarto::quarto_path())
+          rsconnect::deployApp(appName = "faithful", account = "kittipos", server = "shinyapps.io", quarto = quarto::quarto_path())
         shell: Rscript {0}
